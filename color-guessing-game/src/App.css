@@ -1,0 +1,225 @@
+/* Root styles for light and dark mode */
+:root {
+  --bg-light: white;
+  --text-light: black;
+  --bg-dark: #121212;
+  --text-dark: white;
+  --btn-primary: #007bff;
+  --btn-hover: #0056b3;
+  --btn-dark: #222;
+  --btn-dark-hover: #444;
+}
+
+body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Dark mode */
+.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Main container */
+.container {
+  max-width: 500px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: var(--bg-light);
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Dark mode container */
+.container.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Title */
+h1 {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+
+/* Color box */
+.color-box {
+  width: 150px;
+  height: 150px;
+  margin: 20px auto;
+  border: 2px solid black;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Shake animation for wrong guesses */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
+
+.wrong-guess {
+  animation: shake 0.3s ease-in-out;
+}
+
+/* Celebration animation for correct guesses */
+@keyframes celebration {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.correct-guess {
+  animation: celebration 0.5s ease-in-out;
+}
+
+/* Color options grid */
+.color-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+/* Color option buttons */
+.color-options button {
+  width: 80px;
+  height: 40px;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.color-options button:hover {
+  transform: scale(1.1);
+}
+
+/* Game buttons */
+.reset-btn,
+.dark-mode-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.2s ease-in-out;
+}
+
+.reset-btn {
+  background-color: var(--btn-primary);
+  color: white;
+}
+
+.reset-btn:hover {
+  background-color: var(--btn-hover);
+}
+
+.dark-mode-btn {
+  background-color: var(--btn-dark);
+  color: white;
+}
+
+.dark-mode-btn:hover {
+  background-color: var(--btn-dark-hover);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    width: 80%;
+    padding: 15px;
+  }
+
+  .color-box {
+    width: 120px;
+    height: 120px;
+  }
+
+  .color-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .color-options button {
+    width: 70px;
+    height: 35px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .reset-btn,
+  .dark-mode-btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .color-box {
+    width: 100px;
+    height: 100px;
+  }
+
+  .color-options {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+  }
+
+  .color-options button {
+    width: 60px;
+    height: 30px;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  .reset-btn,
+  .dark-mode-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
